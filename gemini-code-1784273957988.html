@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmanuel Dayan — Cinéaste & Scénariste</title>
+    <!-- Chargement rapide de Tailwind CSS pour le style -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        a { transition: all 0.2s ease-in-out; }
+    </style>
+</head>
+<body class="bg-stone-900 text-stone-100 font-sans antialiased">
+
+    <!-- Barre de Navigation -->
+    <nav class="border-b border-stone-800 sticky top-0 bg-stone-950/80 backdrop-blur-md z-50">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="font-semibold tracking-wider text-lg uppercase text-white">Emmanuel Dayan</a>
+            <div class="hidden md:flex space-x-8 text-sm tracking-widest uppercase">
+                <a href="#about" class="hover:text-amber-400 text-stone-400">Bio</a>
+                <a href="#films" class="hover:text-amber-400 text-stone-400">Films</a>
+                <a href="#consulting" class="hover:text-amber-400 text-stone-400">Consulting</a>
+                <a href="#projects" class="hover:text-amber-400 text-stone-400">Projets</a>
+                <a href="#contact" class="hover:text-amber-400 text-stone-400">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- En-tête / Section Vidéo (Bande-démo) -->
+    <header class="max-w-5xl mx-auto px-6 py-12 md:py-20 text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-4">
+            EMMANUEL DAYAN
+        </h1>
+        <p class="text-stone-400 uppercase tracking-widest text-sm md:text-base mb-12">
+            Cinéaste • Scénariste • Expert en Storytelling
+        </p>
+        
+        <!-- Lecteur vidéo responsive (Intègre ici ton lien Vimeo ou YouTube) -->
+        <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl border border-stone-800 bg-black">
+            <!-- Remplace XXXXXX par l'identifiant de ta vidéo Vimeo ou YouTube -->
+            <iframe 
+                src="https://player.vimeo.com/video/XXXXXX" 
+                class="absolute top-0 left-0 w-full h-full" 
+                frameborder="0" 
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </header>
+
+    <!-- Section Biographie -->
+    <section id="about" class="bg-stone-950 border-y border-stone-800 py-16 md:py-24">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 tracking-wide uppercase">Biographie</h2>
+            <div class="text-stone-300 space-y-6 leading-relaxed text-lg">
+                <p>
+                    Je suis un cinéaste et scénariste basé à Paris. J'ai écrit pour France Télévisions, Zadig Films, Wendigo Films, Kepler 22 Productions et France Culture, et j'ai reçu de nombreuses aides du CNC (aide à l'écriture, aide au développement renforcé, aide à la réalisation de court-métrage) ainsi que de l'Institut Français (Bourse Lumière).
+                </p>
+                <p>
+                    Mes films ont été présentés dans des festivals tels que Full Frame, Austin International Film Festival, la FIPA, et les Student Academy Awards. 
+                </p>
+                <p>
+                    Diplômé du Master de Documentaire (MFA) de l'Université de Stanford en tant que boursier Fulbright, et de l'Université Paris X Nanterre (thèse sur l'esthétique de Nietzsche et Kant), j'enseigne le cinéma, l'histoire du cinéma et le scénario depuis 2010 (Stanford in Paris, American University in Paris, Sciences Po, EICAR).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="py-16 md:py-24 max-w-3xl mx-auto px-6 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-6 tracking-wide uppercase">Contact</h2>
+        <p class="text-stone-400 mb-8 max-w-md mx-auto">
+            Pour toute collaboration, projet de film, enseignement ou consulting en scénario et storytelling.
+        </p>
+        <a href="mailto:contact@emmanueldayan.com" class="inline-block bg-amber-500 text-stone-950 font-semibold px-8 py-3 rounded-full hover:bg-amber-400 shadow-lg">
+            Me contacter
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-stone-800 py-8 text-center text-xs text-stone-500">
+        <p>© 2026 Emmanuel Dayan. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
