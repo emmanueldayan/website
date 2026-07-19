@@ -209,24 +209,21 @@
         .logos-container {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 60px;
             margin-top: 80px;
             padding-top: 40px;
             border-top: 1px solid var(--border-light);
+            align-items: center;
         }
 
         .logo-placeholder {
-            width: 80px;
-            height: 80px;
-            background-color: var(--border-light);
-            border-radius: 50%; /* Circle placeholder */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            width: auto;
+            max-width: 200px;
+            height: auto;
+            max-height: 100px;
+            border-radius: 0;
+            object-fit: contain;
+            background-color: transparent;
         }
     </style>
 </head>
@@ -298,18 +295,22 @@
 
             <!-- ABOUT PAGE -->
             <section id="about" class="page">
-                <img src="portrait.png" alt="Portrait" class="image-placeholder-vertical" style="margin-bottom: 40px; object-fit: cover; background-color: transparent;">
+                <img src="images/portrait.png" alt="Portrait" class="image-placeholder-vertical" style="margin-bottom: 40px; object-fit: cover;">
                 
                 <div class="about-text">
                     <p>I'm a Paris-based filmmaker and screenwriter. I have written for France Télévisions, Zadig Films, Wendigo Films, Kepler 22 Productions, and France Culture, and I have received numerous grants from the CNC (Aide à l’écriture, Aide au développement renforcé, Aide à la réalisation du court-métrage) as well as from Institut Français (Bourse Lumière).</p>
                     <p>My films have been shown at festivals such as Full Frame, Austin International Film Festival, FIPA, the Student Academy Awards. I'm a graduate of Stanford’s documentary MFA where I was a Fulbright scholar and from Université Paris-X Nanterre where I wrote a thesis on Nietzsche’s and Kant's Aesthetics.</p>
                     <p>I have taught Film, Film History, and Screenwriting since 2010 at Stanford in Paris, American University in Paris, Sciences Po, among others.</p>
                 </div>
+                
+                <div class="contact-email">
+                    <a href="mailto:dayan@alumni.stanford.edu">dayan@alumni.stanford.edu</a>
+                </div>
 
                 <div class="logos-container">
-                    <img src="logo1.svg" alt="Logo 1" class="logo-placeholder" style="object-fit: contain; background-color: transparent;">
-                    <img src="logo2.png" alt="Logo 2" class="logo-placeholder" style="object-fit: contain; background-color: transparent;">
-                    <img src="logo3.png" alt="Logo 3" class="logo-placeholder" style="object-fit: contain; background-color: transparent;">
+                    <img src="images/logo1.svg" alt="Logo 1" class="logo-placeholder">
+                    <img src="images/logo2.png" alt="Logo 2" class="logo-placeholder">
+                    <img src="images/logo3.png" alt="Logo 3" class="logo-placeholder">
                 </div>
             </section>
 
@@ -324,7 +325,7 @@
                 <!-- Project 1 -->
                 <div class="project-block">
                     <a href="https://www.fondationshoah.org/memoire/le-formulaire-filip-flatau" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <img src="client1.jpg" alt="Le Formulaire" class="image-placeholder-vertical" style="object-fit: cover;">
+                        <img src="images/client1.jpg" alt="Le Formulaire" class="image-placeholder-vertical" style="object-fit: cover;">
                     </a>
                     <div class="project-title">Le Formulaire // Zadig Productions</div>
                     <div class="project-meta">Documentary, 52 minutes. France Télévisions, 2020.</div>
@@ -334,7 +335,7 @@
                 <!-- Project 2 -->
                 <div class="project-block">
                     <a href="https://www.arte.tv/fr/videos/129320-000-A/failing-forward/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <img src="client2.png" alt="Failing Forward" class="image-placeholder-vertical" style="object-fit: cover;">
+                        <img src="images/client2.png" alt="Failing Forward" class="image-placeholder-vertical" style="object-fit: cover;">
                     </a>
                     <div class="project-title">Failing Forward // Le Fresnoy</div>
                     <div class="project-meta">Experimental, 14 minutes, Arte, 2026.</div>
@@ -344,7 +345,7 @@
                 <!-- Project 3 -->
                 <div class="project-block">
                     <a href="https://www.humanite.fr/medias/pologne/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <img src="client3.avif" alt="Le Chateau de mon Pere" class="image-placeholder-vertical" style="object-fit: cover;">
+                        <img src="images/client3.avif" alt="Le Chateau de mon Pere" class="image-placeholder-vertical" style="object-fit: cover;">
                     </a>
                     <div class="project-title">Le Chateau de mon Pere // Zadig Productions</div>
                     <div class="project-meta">Documentary, 53 minutes. France Télévisions, 2024.</div>
@@ -354,7 +355,7 @@
                 <!-- Project 4 -->
                 <div class="project-block">
                     <a href="https://www.facebook.com/errorimagestudio/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <img src="client4.png" alt="Ahsa" class="image-placeholder-vertical" style="object-fit: cover;">
+                        <img src="images/client4.png" alt="Ahsa" class="image-placeholder-vertical" style="object-fit: cover;">
                     </a>
                     <div class="project-title">Ahsa // Error Image Studio Ltd</div>
                     <div class="project-meta">Feature Film, in development.</div>
@@ -379,7 +380,7 @@
             <!-- CONTACT PAGE -->
             <section id="contact" class="page">
                 <div class="contact-container">
-                    <img src="portrait.png" alt="Portrait" class="image-placeholder-vertical" style="margin-bottom: 30px; object-fit: cover;">
+                    <img src="images/portrait.png" alt="Portrait" class="image-placeholder-vertical" style="margin-bottom: 30px; object-fit: cover;">
                     <div class="contact-email">
                         <a href="mailto:dayan@alumni.stanford.edu">dayan@alumni.stanford.edu</a>
                     </div>
