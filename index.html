@@ -1,86 +1,433 @@
+Here is a complete, single-file solution containing your HTML, CSS, and the minimal JavaScript needed to navigate between the pages.
+
+To achieve the "elegant, simple, almost intellectual" aesthetic, this design utilizes a classic, academic serif font (Lora), generous whitespace, a strict center-column layout, and a minimalist black, white, and gray color palette. It feels like a high-end literary journal or a curated gallery space.
+
+You can copy the code below, save it as an `index.html` file, and double-click it to open it directly in any web browser.
+
+```html
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emmanuel Dayan — Cinéaste & Scénariste</title>
-    <!-- Chargement rapide de Tailwind CSS pour le style -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Dayan | Filmmaker & Screenwriter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
-        a { transition: all 0.2s ease-in-out; }
+        /* CSS Variables for consistent minimalist theming */
+        :root {
+            --bg-color: #fdfdfd;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            --accent: #000000;
+            --border-light: #eaeaea;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 700px; /* Narrow, book-like reading column */
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Navigation */
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 20px;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            font-family: 'Lora', serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        nav button:hover, nav button.active {
+            color: var(--accent);
+        }
+
+        /* Page Management */
+        .page {
+            display: none;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 500;
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 1.5em;
+            font-size: 1.05rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: opacity 0.3s;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* Films Section */
+        .film-block {
+            margin-bottom: 80px;
+        }
+
+        .film-title {
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .film-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Consulting Section */
+        .consulting-intro {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .project-block {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .project-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 15px 0 5px 0;
+        }
+
+        .project-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        /* Vertical Image Placeholders */
+        .image-placeholder-vertical {
+            display: block;
+            width: 100%;
+            max-width: 340px; /* Controls the size of the vertical posters */
+            aspect-ratio: 2 / 3; /* Standard movie poster ratio */
+            background-color: var(--border-light);
+            margin: 0 auto;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        a .image-placeholder-vertical:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .placeholder-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #999;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* About & Contact Specifics */
+        .about-text {
+            text-align: justify;
+        }
+
+        .contact-email {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+
+        .contact-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Logos Placeholder */
+        .logos-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background-color: var(--border-light);
+            border-radius: 50%; /* Circle placeholder */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
     </style>
 </head>
-<body class="bg-stone-900 text-stone-100 font-sans antialiased">
+<body>
 
-    <!-- Barre de Navigation -->
-    <nav class="border-b border-stone-800 sticky top-0 bg-stone-950/80 backdrop-blur-md z-50">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="#" class="font-semibold tracking-wider text-lg uppercase text-white">Emmanuel Dayan</a>
-            <div class="hidden md:flex space-x-8 text-sm tracking-widest uppercase">
-                <a href="#about" class="hover:text-amber-400 text-stone-400">Bio</a>
-                <a href="#films" class="hover:text-amber-400 text-stone-400">Films</a>
-                <a href="#consulting" class="hover:text-amber-400 text-stone-400">Consulting</a>
-                <a href="#projects" class="hover:text-amber-400 text-stone-400">Projets</a>
-                <a href="#contact" class="hover:text-amber-400 text-stone-400">Contact</a>
-            </div>
-        </div>
-    </nav>
+    <div class="container">
+        <header>
+            <nav id="navigation">
+                <button onclick="showPage('films')" class="active" id="btn-films">Films</button>
+                <button onclick="showPage('about')" id="btn-about">About</button>
+                <button onclick="showPage('consulting')" id="btn-consulting">Consulting</button>
+                <button onclick="showPage('contact')" id="btn-contact">Contact</button>
+            </nav>
+        </header>
 
-    <!-- En-tête / Section Vidéo (Bande-démo) -->
-    <header class="max-w-5xl mx-auto px-6 py-12 md:py-20 text-center">
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-4">
-            EMMANUEL DAYAN
-        </h1>
-        <p class="text-stone-400 uppercase tracking-widest text-sm md:text-base mb-12">
-            Cinéaste • Scénariste • Expert en Storytelling
-        </p>
-        
-        <!-- Lecteur vidéo responsive (Intègre ici ton lien Vimeo ou YouTube) -->
-        <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl border border-stone-800 bg-black">
-            <!-- Remplace XXXXXX par l'identifiant de ta vidéo Vimeo ou YouTube -->
-            <iframe 
-                src="https://player.vimeo.com/video/XXXXXX" 
-                class="absolute top-0 left-0 w-full h-full" 
-                frameborder="0" 
-                allow="autoplay; fullscreen; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-        </div>
-    </header>
+        <main>
+            <!-- FILMS PAGE (Landing Page) -->
+            <section id="films" class="page active">
+                
+                <div class="film-block">
+                    <div class="film-title">Cinema Lodwar</div>
+                    <div class="film-meta">59 minutes / Documentary/fiction / 2026 / Wendigo Productions</div>
+                    <div class="video-wrapper">
+                        <iframe src="https://player.vimeo.com/video/1209537676" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
 
-    <!-- Section Biographie -->
-    <section id="about" class="bg-stone-950 border-y border-stone-800 py-16 md:py-24">
-        <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 tracking-wide uppercase">Biographie</h2>
-            <div class="text-stone-300 space-y-6 leading-relaxed text-lg">
-                <p>
-                    Je suis un cinéaste et scénariste basé à Paris. J'ai écrit pour France Télévisions, Zadig Films, Wendigo Films, Kepler 22 Productions et France Culture, et j'ai reçu de nombreuses aides du CNC (aide à l'écriture, aide au développement renforcé, aide à la réalisation de court-métrage) ainsi que de l'Institut Français (Bourse Lumière).
-                </p>
-                <p>
-                    Mes films ont été présentés dans des festivals tels que Full Frame, Austin International Film Festival, la FIPA, et les Student Academy Awards. 
-                </p>
-                <p>
-                    Diplômé du Master de Documentaire (MFA) de l'Université de Stanford en tant que boursier Fulbright, et de l'Université Paris X Nanterre (thèse sur l'esthétique de Nietzsche et Kant), j'enseigne le cinéma, l'histoire du cinéma et le scénario depuis 2010 (Stanford in Paris, American University in Paris, Sciences Po, EICAR).
-                </p>
-            </div>
-        </div>
-    </section>
+                <div class="film-block">
+                    <div class="film-title">Viral Dreaming</div>
+                    <div class="film-meta">54 minutes / Documentary / 2022 / APHP, Artemis Films</div>
+                    <div class="video-wrapper">
+                        <iframe src="https://player.vimeo.com/video/1209537140" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
 
-    <!-- Section Contact -->
-    <section id="contact" class="py-16 md:py-24 max-w-3xl mx-auto px-6 text-center">
-        <h2 class="text-2xl md:text-3xl font-bold text-white mb-6 tracking-wide uppercase">Contact</h2>
-        <p class="text-stone-400 mb-8 max-w-md mx-auto">
-            Pour toute collaboration, projet de film, enseignement ou consulting en scénario et storytelling.
-        </p>
-        <a href="mailto:contact@emmanueldayan.com" class="inline-block bg-amber-500 text-stone-950 font-semibold px-8 py-3 rounded-full hover:bg-amber-400 shadow-lg">
-            Me contacter
-        </a>
-    </section>
+                <div class="film-block">
+                    <div class="film-title">Boom Horses</div>
+                    <div class="film-meta">52 minutes / Documentary / 2016 / Kepler 22 Productions</div>
+                    <div class="video-wrapper">
+                        <iframe src="https://player.vimeo.com/video/1209536985" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
 
-    <!-- Footer -->
-    <footer class="border-t border-stone-800 py-8 text-center text-xs text-stone-500">
-        <p>© 2026 Emmanuel Dayan. Tous droits réservés.</p>
-    </footer>
+                <div class="film-block">
+                    <div class="film-title">A Simple Laugh</div>
+                    <div class="film-meta">12 minutes / Fiction / 2016</div>
+                    <div class="video-wrapper">
+                        <iframe src="https://player.vimeo.com/video/216865874" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
 
+                <div class="film-block">
+                    <div class="film-title">In Suspension</div>
+                    <div class="film-meta">16 minutes / Documentary / 2008 / Stanford University</div>
+                    <div class="video-wrapper">
+                        <iframe src="https://player.vimeo.com/video/1209537321" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="film-block">
+                    <div class="film-title">Song of a Sperm Donor</div>
+                    <div class="film-meta">12 minutes / Documentary / 2008 / Stanford University</div>
+                    <div class="video-wrapper">
+                        <iframe src="https://player.vimeo.com/video/12140505" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ABOUT PAGE -->
+            <section id="about" class="page">
+                <div class="about-text">
+                    <p>I'm a Paris-based filmmaker and screenwriter. I have written for France Télévisions, Zadig Films, Wendigo Films, Kepler 22 Productions, and France Culture, and I have received numerous grants from the CNC (Aide à l’écriture, Aide au développement renforcé, Aide à la réalisation du court-métrage) as well as from Institut Français (Bourse Lumière).</p>
+                    <p>My films have been shown at festivals such as Full Frame, Austin International Film Festival, FIPA, the Student Academy Awards. I'm a graduate of Stanford’s documentary MFA where I was a Fulbright scholar and from Université Paris-X Nanterre where I wrote a thesis on Nietzsche’s and Kant's Aesthetics.</p>
+                    <p>I have taught Film, Film History, and Screenwriting since 2010 at Stanford in Paris, American University in Paris, Sciences Po, among others.</p>
+                </div>
+                
+                <div class="contact-email">
+                    <a href="mailto:dayan@alumni.stanford.edu">dayan@alumni.stanford.edu</a>
+                </div>
+
+                <div class="logos-container">
+                    <!-- Replace these divs with actual <img> tags when you have the logos -->
+                    <div class="logo-placeholder">Logo 1</div>
+                    <div class="logo-placeholder">Logo 2</div>
+                    <div class="logo-placeholder">Logo 3</div>
+                </div>
+            </section>
+
+            <!-- CONSULTING PAGE -->
+            <section id="consulting" class="page">
+                <div class="consulting-intro">
+                    <p>As a writing consultant, I have worked for Zadig Films, France 3, Le Fresnoy (Studio National des Arts Contemporains), EICAR, Error Image Studio (Calcutta). I have also created filmmaking workshops at American University in Paris, Stanford in Paris, Sciences Po Paris. I have been part of the jury of the Fulbright Committee.</p>
+                    <p>I'm available for consultations on Feature Film writing, as well as for Documentary Proposal Writing.</p>
+                    <p><em>My approach as a script consultant is based on narrative tools, but also on openness to the singularity of each project.</em></p>
+                </div>
+
+                <!-- Project 1 -->
+                <div class="project-block">
+                    <a href="https://www.fondationshoah.org/memoire/le-formulaire-filip-flatau" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                        <div class="image-placeholder-vertical">
+                            <span class="placeholder-text">Image</span>
+                        </div>
+                    </a>
+                    <div class="project-title">Le Formulaire // Zadig Productions</div>
+                    <div class="project-meta">Documentary, 52 minutes. France Télévisions, 2020.</div>
+                    <a href="https://www.fondationshoah.org/memoire/le-formulaire-filip-flatau" target="_blank" rel="noopener noreferrer">View Project</a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-block">
+                    <a href="https://www.arte.tv/fr/videos/129320-000-A/failing-forward/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                        <div class="image-placeholder-vertical">
+                            <span class="placeholder-text">Image</span>
+                        </div>
+                    </a>
+                    <div class="project-title">Failing Forward // Le Fresnoy</div>
+                    <div class="project-meta">Experimental, 14 minutes, Arte, 2026.</div>
+                    <a href="https://www.arte.tv/fr/videos/129320-000-A/failing-forward/" target="_blank" rel="noopener noreferrer">View Project</a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-block">
+                    <a href="https://www.humanite.fr/medias/pologne/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                        <div class="image-placeholder-vertical">
+                            <span class="placeholder-text">Image</span>
+                        </div>
+                    </a>
+                    <div class="project-title">Le Chateau de mon Pere // Zadig Productions</div>
+                    <div class="project-meta">Documentary, 53 minutes. France Télévisions, 2024.</div>
+                    <a href="https://www.humanite.fr/medias/pologne/" target="_blank" rel="noopener noreferrer">View Project</a>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-block">
+                    <a href="https://www.facebook.com/errorimagestudio/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                        <div class="image-placeholder-vertical">
+                            <span class="placeholder-text">Image</span>
+                        </div>
+                    </a>
+                    <div class="project-title">Ahsa // Error Image Studio Ltd</div>
+                    <div class="project-meta">Feature Film, in development.</div>
+                    <a href="https://www.facebook.com/errorimagestudio/" target="_blank" rel="noopener noreferrer">View Project</a>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-block">
+                    <a href="https://www.eicar.fr/en/filmmaking/programs/master-fine-arts-in-filmmaking" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                        <div class="image-placeholder-vertical">
+                            <span class="placeholder-text">Image</span>
+                        </div>
+                    </a>
+                    <div class="project-title">MFA Projects // EICAR Film School</div>
+                    <div class="project-meta">Tutor and script editor on numerous short films since 2021.</div>
+                    <a href="https://www.eicar.fr/en/filmmaking/programs/master-fine-arts-in-filmmaking" target="_blank" rel="noopener noreferrer">View Project</a>
+                </div>
+
+            </section>
+
+            <!-- CONTACT PAGE -->
+            <section id="contact" class="page">
+                <div class="contact-container">
+                    <div class="image-placeholder-vertical" style="margin-bottom: 30px;">
+                        <span class="placeholder-text">Vertical Image</span>
+                    </div>
+                    <div class="contact-email">
+                        <a href="mailto:dayan@alumni.stanford.edu">dayan@alumni.stanford.edu</a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Minimal JavaScript for internal page navigation -->
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Remove active state from all buttons
+            const buttons = document.querySelectorAll('nav button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show target page and set button active
+            document.getElementById(pageId).classList.add('active');
+            document.getElementById('btn-' + pageId).classList.add('active');
+            
+            // Scroll back to top instantly when changing tabs for clean UX
+            window.scrollTo(0,0);
+        }
+    </script>
 </body>
 </html>
+
+```
