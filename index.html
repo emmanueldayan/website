@@ -268,16 +268,56 @@
             background-color: transparent;
         }
 
-        /* Mobile Responsiveness for Header */
+        /* ========================================= */
+        /* MOBILE RESPONSIVENESS (SMARTPHONES)       */
+        /* ========================================= */
         @media (max-width: 600px) {
-            nav {
-                flex-wrap: wrap;
-                padding-bottom: 40px;
+            .container {
+                padding: 30px 15px; /* Reduce outer padding */
             }
+            
+            header {
+                margin-bottom: 50px; /* Save vertical space */
+            }
+
+            nav {
+                flex-wrap: wrap; /* Allow menu items to wrap on very small screens */
+                gap: 15px;
+                padding-bottom: 50px; /* Make room for the language toggle below */
+            }
+
+            nav button {
+                padding: 10px 5px; /* Increase touch target size for fingers */
+                font-size: 0.85rem;
+            }
+
             .lang-toggle {
-                bottom: 10px;
+                bottom: 15px;
                 right: 50%;
-                transform: translateX(50%);
+                transform: translateX(50%); /* Center the toggle underneath the menu */
+            }
+
+            .film-block {
+                margin-bottom: 50px; /* Reduce gap between films */
+            }
+
+            .consulting-intro, 
+            .project-block {
+                margin-bottom: 45px;
+            }
+
+            .logos-container {
+                flex-wrap: wrap; /* Stack logos if needed */
+                gap: 30px;
+                margin-top: 50px;
+            }
+
+            .logo-placeholder {
+                max-width: 140px; /* Shrink logos slightly for smaller screens */
+            }
+            
+            p {
+                font-size: 1rem; /* Slightly adjust paragraph text */
             }
         }
     </style>
