@@ -247,10 +247,11 @@
             margin-top: 40px;
         }
 
-        /* Logos Placeholder */
+        /* Logos Container */
         .logos-container {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap; /* Ensures 4 logos wrap nicely on medium screens */
             gap: 60px;
             margin-top: 80px;
             padding-top: 40px;
@@ -260,9 +261,9 @@
 
         .logo-placeholder {
             width: auto;
-            max-width: 200px;
+            max-width: 160px; /* Slightly reduced to fit 4 comfortably */
             height: auto;
-            max-height: 100px;
+            max-height: 80px;
             border-radius: 0;
             object-fit: contain;
             background-color: transparent;
@@ -273,32 +274,32 @@
         /* ========================================= */
         @media (max-width: 600px) {
             .container {
-                padding: 30px 15px; /* Reduce outer padding */
+                padding: 30px 15px; 
             }
             
             header {
-                margin-bottom: 50px; /* Save vertical space */
+                margin-bottom: 50px; 
             }
 
             nav {
-                flex-wrap: wrap; /* Allow menu items to wrap on very small screens */
+                flex-wrap: wrap; 
                 gap: 15px;
-                padding-bottom: 50px; /* Make room for the language toggle below */
+                padding-bottom: 50px; 
             }
 
             nav button {
-                padding: 10px 5px; /* Increase touch target size for fingers */
+                padding: 10px 5px; 
                 font-size: 0.85rem;
             }
 
             .lang-toggle {
                 bottom: 15px;
                 right: 50%;
-                transform: translateX(50%); /* Center the toggle underneath the menu */
+                transform: translateX(50%); 
             }
 
             .film-block {
-                margin-bottom: 50px; /* Reduce gap between films */
+                margin-bottom: 50px; 
             }
 
             .consulting-intro, 
@@ -307,17 +308,16 @@
             }
 
             .logos-container {
-                flex-wrap: wrap; /* Stack logos if needed */
                 gap: 30px;
                 margin-top: 50px;
             }
 
             .logo-placeholder {
-                max-width: 140px; /* Shrink logos slightly for smaller screens */
+                max-width: 120px; 
             }
             
             p {
-                font-size: 1rem; /* Slightly adjust paragraph text */
+                font-size: 1rem; 
             }
         }
     </style>
@@ -373,8 +373,8 @@
                         <iframe src="https://player.vimeo.com/video/1209537140" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="film-description">
-                        <p class="lang-en">Through video diaries and dreams, a portrait of doctors and nurses confronting COVID-19 on the front lines.</p>
-                        <p class="lang-fr">À travers leurs journaux intimes filmés et leurs rêves, le portrait de médecins et d’infirmiers en première ligne face au COVID-19.</p>
+                        <p class="lang-en">Through video diaries and dreams, a portrait of doctors and nurses confronting COVID-19 on the front lines in Paris.</p>
+                        <p class="lang-fr">À travers des journaux vidéo et des rêves, le portrait de médecins et d’infirmiers confrontés au COVID-19 en première ligne à Paris.</p>
                     </div>
                 </div>
 
@@ -392,7 +392,7 @@
                     </div>
                     <div class="film-description">
                         <p class="lang-en">In Ireland, abandoned horses roam the rain-soaked countryside, left behind by the economic crisis. A portrait of a generation of horses—and the men who still care for them.</p>
-                        <p class="lang-fr">En Irlande, des chevaux abandonnés errent dans les campagnes détrempées par la pluie, victimes de la crise économique. Le portrait d’une génération de chevaux — et des hommes qui continuent veiller sur eux.</p>
+                        <p class="lang-fr">En Irlande, des chevaux abandonnés errent dans les campagnes détrempées par la pluie, laissés derrière eux par la crise économique. Le portrait d’une génération de chevaux — et des hommes qui continuent à prendre soin d’eux.</p>
                     </div>
                 </div>
 
@@ -425,7 +425,7 @@
                     </div>
                     <div class="film-description">
                         <p class="lang-en">Inside a California neonatal ICU, a young mother and her premature baby begin the fragile journey of meeting one another.</p>
-                        <p class="lang-fr">Dans une unité de soins intensifs néonatals en Californie, une jeune mère et son bébé prématuré se rencontrent pour la première fois autour d'une couveuse.</p>
+                        <p class="lang-fr">Dans une unité de soins intensifs néonatals en Californie, une jeune mère et son bébé prématuré entament le fragile voyage de leur rencontre.</p>
                     </div>
                 </div>
 
@@ -440,7 +440,7 @@
                     </div>
                     <div class="film-description">
                         <p class="lang-en">When Ryann discovers her donor father online, she sets out to meet Jeffrey Harrison, Donor #150. Their parallel journeys reveal the unexpected gap between genetic inheritance and the meaning of parenthood.</p>
-                        <p class="lang-fr">Lorsqu’elle découvre en ligne l’identité de son père biologique, Ryann part à la rencontre de Jeffrey Harrison, donneur n° 150. Leurs parcours parallèles révèlent l’écart entre héritage génétique et paternité.</p>
+                        <p class="lang-fr">Lorsqu’elle découvre en ligne l’identité de son père biologique, Ryann part à la rencontre de Jeffrey Harrison, donneur n° 150. Leurs parcours parallèles révèlent l’écart inattendu entre l’héritage génétique et ce que signifie être parent.</p>
                     </div>
                 </div>
 
@@ -463,10 +463,12 @@
                     </div>
                 </div>
 
+                <!-- INTEGRATED LOGOS -->
                 <div class="logos-container">
-                    <img src="images/logo1.svg" alt="Logo 1" class="logo-placeholder">
-                    <img src="images/logo2.png" alt="Logo 2" class="logo-placeholder">
-                    <img src="images/logo3.png" alt="Logo 3" class="logo-placeholder">
+                    <img src="france-televisions-logo-png_seeklogo-216334.png" alt="France Télévisions" class="logo-placeholder">
+                    <img src="The-Atlantic-logo-vector.png" alt="The Atlantic" class="logo-placeholder">
+                    <img src="The-Guardian-logo-1536x864.png" alt="The Guardian" class="logo-placeholder">
+                    <img src="France_culture_logo.jpg" alt="France Culture" class="logo-placeholder">
                 </div>
             </section>
 
@@ -474,12 +476,12 @@
             <section id="consulting" class="page">
                 <div class="consulting-intro">
                     <div class="lang-en">
-                        <p>As a writing consultant, I have worked for Zadig Films, France 3, Le Fresnoy (Studio National des Arts Contemporains), EICAR, Error Image Studio (Calcutta). I have also created filmmaking workshops at American University in Paris, Stanford, Sciences Po. I have been part of the jury of the Fulbright Committee.</p>
+                        <p>As a writing consultant, I have worked for Zadig Films, France 3, Le Fresnoy (Studio National des Arts Contemporains), EICAR, Error Image Studio (Calcutta). I have also created filmmaking workshops at American University in Paris, Stanford in Paris, Sciences Po Paris. I have been part of the jury of the Fulbright Committee.</p>
                         <p>I'm available for consultations on Feature Film writing, as well as for Documentary Proposal Writing.</p>
                         <p><em>My approach as a script consultant is based on narrative tools, but also on openness to the singularity of each project.</em></p>
                     </div>
                     <div class="lang-fr">
-                        <p>En tant que consultant en écriture, j'ai travaillé pour Zadig Films, France 3, Le Fresnoy (Studio National des Arts Contemporains), l'EICAR, Error Image Studio (Calcutta). J'ai également créé des ateliers de réalisation à l'American University of Paris, à Stanford, ainsi qu'à Sciences Po. J'ai fait partie du jury du Comité Fulbright.</p>
+                        <p>En tant que consultant en écriture, j'ai travaillé pour Zadig Films, France 3, Le Fresnoy (Studio National des Arts Contemporains), l'EICAR, Error Image Studio (Calcutta). J'ai également créé des ateliers de réalisation à l'American University of Paris, à Stanford in Paris, ainsi qu'à Sciences Po Paris. J'ai fait partie du jury du Comité Fulbright.</p>
                         <p>Je suis disponible pour des consultations sur l'écriture de long métrage, ainsi que pour l'écriture de dossiers de note d'intention documentaire.</p>
                         <p><em>Ma démarche en tant que consultant en scénario s'appuie sur des outils narratifs, mais aussi sur une ouverture à la singularité de chaque projet. Voici des liens vers les projets / structures pour lesquels j'ai travaillé.</em></p>
                     </div>
