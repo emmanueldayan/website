@@ -131,19 +131,19 @@
 
         /* Language Switching Logic */
         .lang-fr {
-            display: none; /* French hidden by default */
+            display: none;
         }
         
         body.fr-active .lang-en {
-            display: none; /* Hide English when French is active */
+            display: none;
         }
         
         body.fr-active .lang-fr {
-            display: block; /* Show French block elements */
+            display: block;
         }
 
         body.fr-active span.lang-fr {
-            display: inline; /* Ensure inline spans stay inline */
+            display: inline;
         }
 
         /* Films Section */
@@ -187,7 +187,7 @@
         }
 
         .film-description p {
-            margin-bottom: 0; /* Prevents extra spacing below descriptions */
+            margin-bottom: 0;
         }
 
         /* Consulting Section */
@@ -251,7 +251,7 @@
         .logos-container {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* Ensures 4 logos wrap nicely on medium screens */
+            flex-wrap: wrap; 
             gap: 60px;
             margin-top: 80px;
             padding-top: 40px;
@@ -261,7 +261,7 @@
 
         .logo-placeholder {
             width: auto;
-            max-width: 160px; /* Slightly reduced to fit 4 comfortably */
+            max-width: 160px; 
             height: auto;
             max-height: 80px;
             border-radius: 0;
@@ -322,7 +322,6 @@
         }
     </style>
 </head>
-<!-- No class by default means English is active -->
 <body>
 
     <div class="container">
@@ -465,10 +464,10 @@
 
                 <!-- INTEGRATED LOGOS -->
                 <div class="logos-container">
-                    <img src="france-televisions-logo-png_seeklogo-216334.png" alt="France Télévisions" class="logo-placeholder">
-                    <img src="The-Atlantic-logo-vector.png" alt="The Atlantic" class="logo-placeholder">
-                    <img src="The-Guardian-logo-1536x864.png" alt="The Guardian" class="logo-placeholder">
-                    <img src="France_culture_logo.jpg" alt="France Culture" class="logo-placeholder">
+                    <img src="./france-televisions-logo-png_seeklogo-216334.png" alt="France Télévisions" class="logo-placeholder">
+                    <img src="./The-Atlantic-logo-vector.png" alt="The Atlantic" class="logo-placeholder">
+                    <img src="./The-Guardian-logo-1536x864.png" alt="The Guardian" class="logo-placeholder">
+                    <img src="./France_culture_logo.jpg" alt="France Culture" class="logo-placeholder">
                 </div>
             </section>
 
